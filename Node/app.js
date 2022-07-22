@@ -5,12 +5,17 @@ const { connectToDb, getDb } = require("./db");
 
 // init app & middleware
 
+const cors = require('cors');
 const app = express();
 
 app.use(express.json())
 // Connect to the Db
 
 let dbConnectivity;
+
+app.use(cors({
+  origin: '*'
+}));
 
 connectToDb((err) => {
   // if we don't get err from db connectivity then our port will start
